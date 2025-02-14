@@ -4,13 +4,20 @@
   "description": "This repository is a personal project designed to explore and study the main tools of the AWS SDK (Software Development Kit). It implements a basic yet functional document backup and notification system using a variety of AWS services, providing a practical learning environment for interacting with the AWS cloud.",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx dist/index.js",
+    "build": "rm -rf dist && tsc --outDir dist",
+    "zip": "npm run build && zip -r function-one.zip dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.726.1",
+    "@aws-sdk/client-ses": "^3.734.0",
     "@fastify/cors": "^10.0.1",
+    "@fastify/formbody": "^8.0.2",
+    "@fastify/multipart": "^9.0.3",
     "fastify": "^5.2.0"
   },
   "devDependencies": {
