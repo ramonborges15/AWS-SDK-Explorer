@@ -7,14 +7,17 @@
     "dev": "tsx watch src/server.ts",
     "start": "tsx dist/index.js",
     "build": "rm -rf dist && tsc --outDir dist",
-    "zip": "npm run build && zip -r function-one.zip dist"
+    "zip": "rm -f function-one.zip && npm run build && zip -r function-one.zip dist",
+    "upload-aws": "aws --endpoint-url=http://localhost:4566 s3 cp function-one.zip s3://uploaded-documents-202412241304-bucket/function-one.zip"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.749.0",
     "@aws-sdk/client-s3": "^3.726.1",
     "@aws-sdk/client-ses": "^3.734.0",
+    "@aws-sdk/lib-dynamodb": "^3.749.0",
     "@fastify/cors": "^10.0.1",
     "@fastify/formbody": "^8.0.2",
     "@fastify/multipart": "^9.0.3",
