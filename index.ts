@@ -3,7 +3,7 @@ import lambdaFunctionOne from "./src/lambdas/lambda-function-one"
 export async function handler(event: any) {
     console.log("Iniciando a execução da Lambda");
 
-    return lambdaFunctionOne()
+    return lambdaFunctionOne(event)
         .then(() => {
             console.log("Lambda concluída com sucesso!");
             return {
